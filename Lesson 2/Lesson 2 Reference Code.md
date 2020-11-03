@@ -33,5 +33,8 @@ for i in range(1, 101):
 print(sum)
 
 
+sum = (1 + 1000000000 ) * 1000000000 / 2
+print(int(sum))
+
 
 ```
