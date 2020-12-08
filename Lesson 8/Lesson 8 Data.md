@@ -1,6 +1,6 @@
 ```python
 
-votes = ["Einstein", "Newton", "Gauss", "Darwin", "Gauss", "Euler", 
+votes = ["Newton", "Einstein", "Gauss", "Darwin", "Gauss", "Euler", 
          "Pythagoras", "Newton", "Euler", "Darwin", "Einstein",
          "Edison", "Gauss", "Euler", "Newton", "Darwin", "Einstein",
          "Einstein", "Edison", "Einstein", "Gauss", "Galileo", "Einstein",
