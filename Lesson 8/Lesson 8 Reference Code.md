@@ -144,3 +144,46 @@ count = len(d)
 print("the total items in this dictionary is:", count)
 
 
+# Famous Scientists
+
+# ******************
+# * first approach *
+# ******************
+votes = ["Newton", "Einstein", "Gauss", "Darwin", "Gauss", "Euler", 
+         "Pythagoras", "Newton", "Euler", "Darwin", "Einstein",
+         "Edison", "Gauss", "Euler", "Newton", "Darwin", "Einstein",
+         "Einstein", "Edison", "Einstein", "Gauss", "Galileo", "Einstein",
+         "Gauss", "Galileo", "Newton", "Gauss"]
+
+# create a empty dictionary
+scientists = {}
+
+# check the name one by one in the votes
+for name in votes:
+  if name not in scientists:
+    scientists[name] = 1
+  else:
+    scientists[name] = scientists[name] + 1
+
+# print out the survey result
+print("the survey result:", scientists)
+
+max_count = 0
+for count in scientists.values():
+  if count > max_count:
+    max_count = count
+
+print("max count is:", max_count)
+
+# create a empty list to store the most famous scientists (might be more than 1)
+mfs = []
+
+for name in scientists:
+  if scientists[name] == max_count:
+    mfs.append(name)
+
+print("most famous scientists are:", mfs)
+
+
+
+```
