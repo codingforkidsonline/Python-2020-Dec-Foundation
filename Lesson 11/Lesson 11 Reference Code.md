@@ -1,5 +1,19 @@
 ```python
 
+def print_winner_message():
+  print("\nYou did it! Your mission is completed!")
+  print("* * * * * * * * * * * * * * * * * * * * * * *")
+  print("*            You are the WINNER!            *")
+  print("* * * * * * * * * * * * * * * * * * * * * * *")
+
+
+def print_gameover_message():
+  print("\nYou lost the game!")
+  print("* * * * * * * * * * * * * * * * * * * * * * *")
+  print("*                GAME OVER!                 *")
+  print("* * * * * * * * * * * * * * * * * * * * * * *")
+
+
 def hit_wall():
   global current_health_point   #as we need to modify this global variable, we need to declare it as global
   current_health_point -= 1
@@ -9,8 +23,33 @@ def hit_wall():
     return "OK"
   else:
     print("You have used up all your health point!")  
-    print("Gameover")
+    print_gameover_message()
     return "GAMEOVER"
+
+
+def discover_letter():
+  print(smart_move_msg)
+  # below print statement is for debugging purpose, disable it when playing the game
+  # print("current row: " + str(current_row), "current column: " + str(current_col))  
+  if forest[current_row][current_col] != "":
+    letter = forest[current_row][current_col]
+    print("You have discovered a letter: " + letter)
+    letter_list.append(letter)
+    forest[current_row][current_col] = ""   # set this cell to empty as the letter is discovered  
+  if len(letter_list) == word_length:
+    print("\nCongratulation! You have discovered all the letters.")
+    print(letter_list)
+    print("\nYour final task is to guess the secret word.")
+    guess = input("What is the secret word in your mind? ")
+    if(guess.upper() == secret_word.upper()):
+      print_winner_message()
+      return "WIN"
+    else:
+      print("Wrong guess!")  
+      print_gameover_message()
+      return "LOSE"
+  else:
+    return "CONTINUE"
 	
 	
 	
