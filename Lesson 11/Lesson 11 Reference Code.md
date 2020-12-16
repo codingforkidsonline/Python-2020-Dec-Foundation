@@ -1,3 +1,6 @@
+
+```python
+
 # Version 10
 # use randint() function to generate the initial position of the player
 
@@ -164,3 +167,5 @@ while True:
     break;
   else:
     print("Invalid move, try again.")
+	
+```
