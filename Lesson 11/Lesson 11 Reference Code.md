@@ -15,8 +15,10 @@ def hit_wall():
 	
 	
 
-# Version 4:
-# Start the game
+# Version 7
+# do the same thing (check hit a wall and make a valid move)
+# for other directions (right, up, down)
+# set current_row = 1 and current_col = 2 as the initial position
 
 # 1. your game title
 print("* * * * * * * * * * * * * * * * * * * * * * *")
@@ -48,8 +50,8 @@ print("map rows: {0}, map columns: {1}".format(map_row_count, map_col_count))
 
 
 # 2.3 set the player's initial position in the forest
-current_row = 0  #we can use randint()
-current_col = 0  #we can use randint()
+current_row = 1  #we can use randint()
+current_col = 2  #we can use randint()
 
 # 2.4 create a list to store the letters has been discovered by the player so far
 letter_list = []
@@ -80,13 +82,29 @@ response = ""
 while True:
   response = input("\nWhich direction would you like to move to? [left], [right], [up], [down]: ")
   if response == "left" or response == "l":
-    print("move to left")  # we need to decide what to do if the user want to move to left
+    if current_col == 0:
+      print(hit_wall_msg)
+    else:      
+      current_col -= 1
+      print(smart_move_msg)
   elif response == "right" or response == "r":
-    print("move to right")  # we need to decide what to do if the user want to move to rigth
+    if current_col == map_col_count-1:      
+      print(hit_wall_msg)
+    else:      
+      current_col += 1
+      print(smart_move_msg)
   elif response == "up" or response == "u":
-    print("move up")  # we need to decide what to do if the user want to move up
+    if current_row == 0:      
+      print(hit_wall_msg)
+    else:      
+      current_row -= 1
+      print(smart_move_msg)
   elif response == "down" or response == "d":
-    print("move down")  # we need to decide what to do if the user want to move down
+    if current_row == map_row_count-1:      
+      print(hit_wall_msg)
+    else:      
+      current_row += 1
+      print(smart_move_msg)
   elif response == "quit" or response == "exit":
     print("\nThanks for playing this game, bye-bye!")
     break;
