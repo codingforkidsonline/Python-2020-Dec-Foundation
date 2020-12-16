@@ -1,5 +1,10 @@
 ```python
 
+# Version 10
+# use randint() function to generate the initial position of the player
+
+from random import randint
+
 def print_winner_message():
   print("\nYou did it! Your mission is completed!")
   print("* * * * * * * * * * * * * * * * * * * * * * *")
@@ -50,14 +55,7 @@ def discover_letter():
       return "LOSE"
   else:
     return "CONTINUE"
-	
-	
-	
 
-# Version 7
-# do the same thing (check hit a wall and make a valid move)
-# for other directions (right, up, down)
-# set current_row = 1 and current_col = 2 as the initial position
 
 # 1. your game title
 print("* * * * * * * * * * * * * * * * * * * * * * *")
@@ -75,7 +73,7 @@ word_length = len(secret_word)
 
 #2.2 define the forest map with n rows and m columns
 forest = [
-            ["A", "", "", "", ""],   # row 0
+            ["A", "*", "", "", ""],   # row 0
             ["", "G", "", "", ""],   # row 1
             ["", "", "R", "", ""],   # row 2
             ["E", "", "", "", ""],   # row 3
@@ -89,8 +87,10 @@ print("map rows: {0}, map columns: {1}".format(map_row_count, map_col_count))
 
 
 # 2.3 set the player's initial position in the forest
-current_row = 1  #we can use randint()
-current_col = 2  #we can use randint()
+current_row = randint(0, map_row_count-1)  
+current_col = randint(0, map_col_count-1)  
+# for testing purpose only, comment out below print when playing the game
+print("Player's initial position:", current_row, current_col) 
 
 # 2.4 create a list to store the letters has been discovered by the player so far
 letter_list = []
@@ -121,35 +121,51 @@ response = ""
 while True:
   response = input("\nWhich direction would you like to move to? [left], [right], [up], [down]: ")
   if response == "left" or response == "l":
-    if current_col == 0:
-      print(hit_wall_msg)
+    if current_col == 0:      
+      result = hit_wall()
+      if(result == "GAMEOVER"):
+        break;
     else:      
       current_col -= 1
-      print(smart_move_msg)
+      result = discover_letter()
+      if(result == "WIN" or result == "LOSE"):
+        # you might want to let the user to go to next level if they have won the current level
+        break;
   elif response == "right" or response == "r":
     if current_col == map_col_count-1:      
-      print(hit_wall_msg)
-    else:      
+      result = hit_wall()
+      if(result == "GAMEOVER"):
+        break;
+    else:
       current_col += 1
-      print(smart_move_msg)
+      result = discover_letter()
+      if(result == "WIN" or result == "LOSE"):
+        break;
   elif response == "up" or response == "u":
     if current_row == 0:      
-      print(hit_wall_msg)
-    else:      
+      result = hit_wall()
+      if(result == "GAMEOVER"):
+        break;
+    else:
       current_row -= 1
-      print(smart_move_msg)
+      result = discover_letter()
+      if(result == "WIN" or result == "LOSE"):
+        break;
   elif response == "down" or response == "d":
     if current_row == map_row_count-1:      
-      print(hit_wall_msg)
-    else:      
+      result = hit_wall()
+      if(result == "GAMEOVER"):
+        break;
+    else:
       current_row += 1
-      print(smart_move_msg)
+      result = discover_letter()
+      if(result == "WIN" or result == "LOSE"):
+        break;
   elif response == "quit" or response == "exit":
     print("\nThanks for playing this game, bye-bye!")
     break;
   else:
     print("Invalid move, try again.")
-
 
 
 ```
