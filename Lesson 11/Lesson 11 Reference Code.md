@@ -1,5 +1,3 @@
-```python
-
 # Version 10
 # use randint() function to generate the initial position of the player
 
@@ -73,7 +71,7 @@ word_length = len(secret_word)
 
 #2.2 define the forest map with n rows and m columns
 forest = [
-            ["A", "*", "", "", ""],   # row 0
+            ["A", "", "", "", ""],   # row 0
             ["", "G", "", "", ""],   # row 1
             ["", "", "R", "", ""],   # row 2
             ["E", "", "", "", ""],   # row 3
@@ -166,6 +164,3 @@ while True:
     break;
   else:
     print("Invalid move, try again.")
-
-
-```
